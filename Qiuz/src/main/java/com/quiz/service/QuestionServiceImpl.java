@@ -121,25 +121,10 @@ public class QuestionServiceImpl implements QuestionService {
 
 
 
-//	@Override
-//	public String checkAnswer(Long questionId, List<String> userAnswers) throws QuestionException {
-//		// TODO Auto-generated method stub
-//		Optional<Question> questionOpt = questionRepository.findById(questionId); 
-//		if (questionOpt.isEmpty()) { 
-//			throw new QuestionException("Question not found with id: " + questionId); 
-//			} 
-//		Question question = questionOpt.get();
-//		List<String> correctAnswers = question.getCorrectAnswersList(); 
-//		boolean isCorrect = correctAnswers.equals(userAnswers);
-//		return isCorrect ? "Correct" : "Incorrect";
-//	}
-
-
-
 	
 
 	    
-	    @Override
+           @Override
 	    public String checkAnswers(Long quizId, Long userId, List<AnswerRequest> answerRequests) {
 	        int totalQuestions = answerRequests.size();
 	        int correctAnswers = 0;
