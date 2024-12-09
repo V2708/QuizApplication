@@ -1,0 +1,57 @@
+CREATE TABLE Question (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    options TEXT,
+    correctAnswers TEXT
+);
+INSERT INTO Question (title, options, correctAnswers)
+VALUES (
+    'Which of the following are programming languages?',
+    'HTML,CSS,JavaScript,Java',
+    'JavaScript,Java'
+);
+INSERT INTO Question (title, options, correctAnswers)
+VALUES (
+    'What is the capital of France?',
+    'Berlin,Madrid,Paris,Rome',
+    'Paris'
+);
+select * from Question
+
+
+CREATE TABLE User (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
+INSERT INTO User (username, password, email)
+VALUES ('john_doe', 'password123', 'john.doe@example.com');
+
+INSERT INTO User (username, password, email)
+VALUES ('jane_smith', 'securepassword', 'jane.smith@example.com');
+select * from user
+
+CREATE TABLE Score (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    userId BIGINT NOT NULL,
+    quizId BIGINT NOT NULL,
+    score INT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userId) REFERENCES User(id),
+    FOREIGN KEY (quizId) REFERENCES Question(id)
+);
+
+INSERT INTO Score (userId, quizId, score, timestamp)
+VALUES (1, 1, 85, '2024-12-09 10:00:00');
+
+INSERT INTO Score (userId, quizId, score, timestamp)
+VALUES (1, 2, 70, '2024-12-09 11:00:00');
+
+
+INSERT INTO Score (userId, quizId, score, timestamp)
+VALUES (2, 1, 95, '2024-12-09 12:00:00');
+
+INSERT INTO Score (userId, quizId, score, timestamp)
+VALUES (2, 2, 80, '2024-12-09 13:00:00');
+select * from score
